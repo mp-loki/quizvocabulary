@@ -1,0 +1,20 @@
+<link rel="stylesheet" href="src/app/view/css/flag-icon.css">
+<div *ngIf="profile">
+<h4>{{profile.name}}</h4>
+<h4>{{profile.nativeLanguage.name}}</h4>
+<h4>Select languages you want to study:</h4>
+<p>You can add more languages later</p>
+<div class="col-sm-12 col-lg-6">
+	<div class="row">
+	       <label>Language Studies: </label>
+	   </div>
+	<div class="col-sm-6 col-lg-6" *ngFor="let language of getNonNativeLanguages()">
+		<div class="alert" [ngClass]="isSelectedLanguage(language) ? 'alert-success' : 'alert-border'" (click)="toggleLanguage(language)">
+		   <label>{{language.name}}</label><span class="float-right flag-icon flag-icon-{{language.code}}"></span>
+		</div>
+	</div>
+	<div class="row col-sm-12 text-center top-buffer" *ngIf="saveEnabled()">
+		<button (click)="save()" type="button" class="btn btn-info" i18n="Save">Save</button>
+	</div>
+</div>
+</div>

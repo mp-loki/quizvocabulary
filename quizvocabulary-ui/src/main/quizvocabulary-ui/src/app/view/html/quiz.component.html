@@ -1,0 +1,60 @@
+<link rel="stylesheet" href="../css/quiz.css">
+<div (click)="tap()">
+	<div class="row top-buffer" *ngIf="!quizOver">
+		<div class="col-sm-12 col-lg-6" *ngIf="quiz">
+			<div class="col-sm-6">
+				<span class="quiz-msg" *ngIf="answered && correct"
+					class="message success-message">Correct!</span> <span
+					class="quiz-msg" *ngIf="answered && !correct"
+					class="message failure-message">Incorrect</span>
+			</div>
+			<div class="col-sm-6 text-align-right">
+				<span class="message">Question: {{currentQuestionIdx +
+					1}}/{{getTotalNumber()}}</span>
+			</div>
+		</div>
+	</div>
+	<div class="row" *ngIf="!quizOver">
+		<div class="col-sm-12 col-lg-6" *ngIf="currentQuestion">
+			<div class="container col-sm-12 col-lg-12 top-buffer bottom">
+				<div class="alert alert-info">
+					<span class="question-logos">{{currentQuestion.question.logosA}}</span>
+				</div>
+			</div>
+			<div
+				class="container col-sm-12 col-lg-12 top-buffer tap-toproceed-block">
+				<span class="message message-sm failure-message"
+					*ngIf="answered && !correct">Tap to proceed</span>
+			</div>
+			<div class="container col-sm-12 col-lg-6"
+				*ngFor="let option of currentQuestion.options">
+				<div class="alert"
+					[ngClass]="answered ? isCorrect(option) ? 'alert-success': isSelected(option) ? 'alert-danger' : 'alert-border' : 'alert-border'"
+					(click)="select($event, option)">
+					<span class="question-logos">{{option.logosB}}</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div *ngIf="quizOver">
+	<div class="row top-buffer">
+		<div class="col-sm-12 col-lg-6">
+			<span class="message">Quiz Over</span>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-12 col-lg-12 top-buffer">
+			<span class="message">Correct:
+				{{quiz.correct.length}}/{{quiz.questions.length}}</span>
+		</div>
+		<div class="col-sm-12 col-lg-12 top-buffer">
+			<span class="message">Your score: {{getCorrectPrcentage()}}%</span>
+		</div>
+	</div>
+	<div class="row top-buffer">
+		<div class="col-sm-12 col-lg-12 ">
+			<button type="button" class="btn btn-info" (click)="ngOnInit()">Start Over!</button>
+		</div>
+	</div>
+</div>

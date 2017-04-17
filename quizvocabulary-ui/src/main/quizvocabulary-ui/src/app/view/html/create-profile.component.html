@@ -1,0 +1,19 @@
+<div class="profile container col-sm-10 col-lg-4" *ngIf="profile">
+	<h4 i18n="User Profile">Create Your Profile</h4>
+    <div class="row col-sm-10 col-lg-12">
+	    <label i18n="email">Email: </label>{{profile.email}}
+    </div>
+	<div class="row col-sm-12">
+		<label i18n="Name">Name: </label> <input type="text" class="form-control"
+			[(ngModel)]="profile.name" placeholder="name" />
+	</div>
+	<div class="row col-sm-12">
+		<label for="sel1" i18n="Native Language">Native language:</label>
+		<select class="form-control" id="sel1" [(ngModel)]="profile.nativeLanguage">
+			<option *ngFor="let language of languages" [ngValue]="language"><span>{{language.name}}</span></option>
+		</select>
+	</div>		
+	<div class="row col-sm-12 text-center top-buffer">
+		<button (click)="proceed()" type="button" class="btn btn-info" i18n="Next">Next</button>
+	</div>
+</div>

@@ -1,0 +1,27 @@
+<link rel="stylesheet" href="../css/home.css">
+<link rel="stylesheet" href="../css/flag-icon.css">
+<h4 i18n="Home">Home</h4>
+<div class="profile" *ngIf="profile" class="col-sm-12 col-lg-4">
+	<div>
+		<label i18n="Email">Email: </label>{{profile.email}}
+	</div>
+	<div>
+		<div class="col-sm-8">
+			<label i18n="Name">Name: {{profile.name}}</label>
+		</div>
+		<div class="col-sm-8">
+			<label i18n="Native language">Native Language: {{profile.nativeLanguage.name}}</label>
+		</div>
+		<div class="col-sm-8">
+			<div>
+				<label i18n="Language Studies">Language Studies: </label>
+			</div>
+			<div *ngFor="let language of  profile.languages" class="alert studied-lang col-sm-12" (click)="openLanguageBoards(language)">
+			   <label>{{language.name}}</label><span class="float-right flag-icon flag-icon-{{language.code}}"></span>
+			</div>
+		</div>
+		<div class="col-sm-8">
+			<a routerLink="/profile/select-language-studies" class="btn btn-success btn-circle btn-xl float-right"><i class="glyphicon glyphicon-plus"></i></a>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,21 @@
+<link rel="stylesheet" href="../css/flag-icon.css">
+<div class="row">
+<div class="col-sm-12 col-lg-4" *ngIf="profile">
+	<div>
+		<label>Add Entry:</label>
+	</div>
+	<div class="col-sm-6 col-xs-12">
+		<span *ngIf="getStudiedLanguage()" class="flag-icon flag-icon-{{getStudiedLanguage().code}}"></span><label for="logos-a">Word:</label>
+		<input type="text" class="form-control" name="logos-a" [(ngModel)]="newLogosA">
+	</div>
+	<div class="col-sm-6 col-xs-12">
+		<span class="flag-icon flag-icon-{{profile.nativeLanguage.code}}"></span><label for="logos-b">Translation:</label>
+		<input type="text" class="form-control" name="logos-b" [(ngModel)]="newLogosB">
+	</div>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-12 col-lg-4 top-buffer">
+	<button (click)="savePair()" type="button" class="btn btn-info {{saveEnabled() ? 'active' : 'disabled'}}" i18n="Save">Save</button>
+</div>
+</div>
