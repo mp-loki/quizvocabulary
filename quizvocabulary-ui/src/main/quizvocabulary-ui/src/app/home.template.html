@@ -4,3 +4,13 @@
   This repo shows you how to set up authentication in your Angular 2 apps with Auth0.
   Get started by providing your Auth0 client ID and domain in the Auth0Lock widget in <code>auth/auth.service.ts</code>.
 </p>
+<div class="home jumbotron centered">
+   <h4>Welcome to the angular2 authentication sample!</h4>
+   <h5 *ngIf="jwt">Your JWT is:</h5>
+   <pre *ngIf="jwt" class="jwt"><code></code></pre>
+   <pre *ngIf="jwt" class="jwt"><code></code></pre>
+
+   <p><a class="btn btn-primary btn-lg" role="button" (click)="getUsers()">Call API</a></p>
+   <h6 *ngIf="response">The response of calling the <span class="red"></span> API is:</h6>
+   <h6 *ngIf="response">{{response}}</h6>
+</div>

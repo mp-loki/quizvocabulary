@@ -10,6 +10,7 @@ import { ProfileComponent }    from './profile.component';
 import { SelectLanguageStudiesComponent } from './component/profile/select-language-studies.component';
 import { ProfileService } from './service/profile.service';
 import { LanguageService } from './service/language.service';
+import { HttpService } from './service/http.service';
 import { ProfileShow }         from './profile_show.component';
 import { ProfileEdit }         from './profile_edit.component';
 import { routing,
@@ -37,6 +38,7 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
         },
         ProfileService,
         LanguageService,
+        HttpService
     ],
     imports:      [
         BrowserModule,
