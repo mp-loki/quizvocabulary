@@ -3,22 +3,19 @@ import { tokenNotExpired } from 'angular2-jwt';
 import { myConfig }        from './auth.config';
 
 // Avoid name not found warnings
+var options = {
+  auth: {
+    params: {scope: 'openid email user_metadata app_metadata picture',
+             responseType: 'id_token token'},
+  }
+};  
+
 declare var Auth0Lock: any;
 
 @Injectable()
 export class Auth {
   // Configure Auth0
-  lock = new Auth0Lock(myConfig.clientID, myConfig.domain, {
-    additionalSignUpFields: [{
-      name: "address",                              // required
-      placeholder: "enter your address",            // required
-      icon: "https://example.com/address_icon.png", // optional
-      validator: function(value) {                  // optional
-        // only accept addresses with more than 10 chars
-        return value.length > 10;
-      }
-    }]
-  });
+  lock = new Auth0Lock(myConfig.clientID, myConfig.domain, options);
 
   //Store profile object in auth class
   userProfile: any;
@@ -28,7 +25,9 @@ export class Auth {
     this.userProfile = JSON.parse(localStorage.getItem('profile'));
 
     // Add callback for lock `authenticated` event
-    this.lock.on("authenticated", (authResult) => {
+    this.lock.on('authenticated', (authResult) => {
+      
+    
       localStorage.setItem('token', authResult.idToken);
 
       // Fetch profile information
@@ -54,11 +53,12 @@ export class Auth {
   public authenticated() {
     // Check if there's an unexpired JWT
     // It searches for an item in localStorage with key == 'id_token'
-    return tokenNotExpired();
+    return tokenNotExpired('token');
   };
 
   public logout() {
     // Remove token and profile from localStorage
+    console.log("logout clicked");
     localStorage.removeItem('token');
     localStorage.removeItem('profile');
     this.userProfile = undefined;
