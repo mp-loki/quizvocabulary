@@ -21,14 +21,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.csrf().disable()
-			.authorizeRequests()
-			.antMatchers("/").permitAll()
-			.antMatchers(HttpMethod.POST, "/login").permitAll()
-			.antMatchers("/api/*").authenticated()
-			.anyRequest().permitAll();
-
-		JwtWebSecurityConfigurer.forRS256(audience, issuer).configure(http);
+		JwtWebSecurityConfigurer.forRS256(audience, issuer).configure(http)
+				.authorizeRequests()
+				.antMatchers("/").permitAll()
+				.antMatchers(HttpMethod.POST, "/login").permitAll()
+				.antMatchers("/api/*").authenticated()
+				.anyRequest().permitAll();
 	}
 
 }
