@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Auth }      from './auth.service';
+import { Auth } from './auth.service';
 import { HttpService } from './service/http.service';
 
 @Component({
@@ -8,15 +8,14 @@ import { HttpService } from './service/http.service';
 })
 
 export class HomeComponent {
-  constructor(private auth: Auth, httpService: HttpService) {
-	  this.httpService = httpService
+  response: any;
+  constructor(private auth: Auth, private httpService: HttpService) {
   }
-  
-  response: string;
-  httpService:HttpService; 
-  
+
   getUsers() {
-	  console.log('getUsers() called')
-	  this.response = this.httpService.getUsers()
+    this.httpService.getUsers().then((data) => {
+      console.log('***' + data);
+      this.response = data;
+    });
   }
 };

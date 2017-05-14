@@ -17,7 +17,13 @@ import { routing,
          appRoutingProviders } from './app.routes';
 
 export function authHttpServiceFactory(http: Http, options: RequestOptions) {
-	return new AuthHttp( new AuthConfig({}), http, options);
+	return new AuthHttp(new AuthConfig({
+    headerPrefix: 'Bearer',
+    noJwtError: true,
+    tokenName:'accessToken',
+    globalHeaders: [{'Accept': 'application/json'}],
+    tokenGetter: (() => localStorage.getItem('accessToken'))
+  }), http);
 }         
          
 @NgModule({

@@ -26,9 +26,9 @@ export class Auth {
 
     // Add callback for lock `authenticated` event
     this.lock.on('authenticated', (authResult) => {
-      
-    
+
       localStorage.setItem('token', authResult.idToken);
+      localStorage.setItem('accessToken', authResult.accessToken);
 
       // Fetch profile information
       this.lock.getProfile(authResult.idToken, (error, profile) => {
@@ -60,6 +60,7 @@ export class Auth {
     // Remove token and profile from localStorage
     console.log("logout clicked");
     localStorage.removeItem('token');
+    localStorage.removeItem('accessToken');
     localStorage.removeItem('profile');
     this.userProfile = undefined;
   };
