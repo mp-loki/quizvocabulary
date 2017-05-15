@@ -7,6 +7,7 @@ import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
+import { AbstractService } from './abstract.service';
 
 const LANGUAGES: Language[] = [
     { name: 'English', code: 'en' },
@@ -19,9 +20,11 @@ const LANGUAGES: Language[] = [
 
 const LANG_URL = '/api/v1/languages';
 @Injectable()
-export class LanguageService {
+export class LanguageService extends AbstractService {
 
-    constructor(private authHttp: AuthHttp) { }
+    constructor(private authHttp: AuthHttp) {
+       super();
+    }
 
     getLanguages(): Promise<Language[]> {
         return this.authHttp.get(LANG_URL)
@@ -39,10 +42,4 @@ export class LanguageService {
     getBoards(language: Language) { 
 
     }
-
-    private handleError(error: any): Promise<any> {
-        console.error('An error occurred', error); // for demo purposes only
-        return Promise.reject(error.message || error);
-    }
-
 }

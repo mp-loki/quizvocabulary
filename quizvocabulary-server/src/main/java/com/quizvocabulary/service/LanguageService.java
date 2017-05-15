@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.quizvocabulary.dao.language.LanguageDao;
-import com.quizvocabulary.model.data.Language;
+import com.quizvocabulary.data.model.Language;
 
 @Component
 public class LanguageService {

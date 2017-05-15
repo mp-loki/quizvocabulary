@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import com.quizvocabulary.dao.AbstractJpaDao;
 import com.quizvocabulary.dao.model.LanguageEntity;
 import com.quizvocabulary.dao.util.DaoUtil;
-import com.quizvocabulary.model.data.Language;
+import com.quizvocabulary.data.model.Language;
 
 @Component
 public class JpaLanguageDao extends AbstractJpaDao<LanguageEntity, Language, String> implements LanguageDao {

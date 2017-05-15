@@ -1,22 +1,35 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Profile } from '../model/profile';
+import { AuthHttp } from 'angular2-jwt';
+import { AbstractService } from './abstract.service';
+
+const PROFILE_URL = '/api/v1/profile';
 
 @Injectable()
-export class ProfileService {
-  private profile = this.initProfile();
-  constructor(private http: Http) { }
-
-  initProfile(): Profile {
-    let profile = new Profile();
-    profile.name = 'Savi';
-    profile.email = 'savi@gmail.com';
-    //profile.nativeLanguage = { name: 'English', code: 'en' };
-    return profile;
+export class ProfileService extends AbstractService {
+  private profile: Profile;// = this.initProfile();
+  constructor(private authHttp: AuthHttp) {
+    super();
   }
 
   getProfile(): Promise<Profile> {
-    return Promise.resolve(this.profile);
+
+    if (this.profile != null) {
+      return Promise.resolve(this.profile);
+    } else {
+      return this.authHttp.get(PROFILE_URL)
+        .toPromise()
+        .then(response => {
+          try {
+            this.profile = response.json() as Profile;
+            return this.profile;
+          } catch (e) {
+            return null;
+          }
+        })
+        .catch(this.handleError);
+    }
   }
 
   saveTempProfile(profile: Profile) {

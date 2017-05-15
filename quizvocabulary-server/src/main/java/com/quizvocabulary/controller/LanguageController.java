@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.quizvocabulary.model.data.Language;
+import com.quizvocabulary.data.model.Language;
 import com.quizvocabulary.service.LanguageService;
 
 @RestController

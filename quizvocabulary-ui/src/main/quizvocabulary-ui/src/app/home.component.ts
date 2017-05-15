@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Auth } from './auth.service';
 import { HttpService } from './service/http.service';
 import { LanguageService } from './service/language.service';
@@ -25,4 +25,5 @@ export class HomeComponent {
       this.response = data;
     });
   }
+  
 };

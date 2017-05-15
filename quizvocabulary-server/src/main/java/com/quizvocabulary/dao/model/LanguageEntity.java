@@ -4,7 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-import com.quizvocabulary.model.data.Language;
+import com.quizvocabulary.data.model.Language;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

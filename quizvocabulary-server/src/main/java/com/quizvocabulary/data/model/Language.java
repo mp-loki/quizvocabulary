@@ -1,4 +1,4 @@
-package com.quizvocabulary.model.data;
+package com.quizvocabulary.data.model;
 
 import lombok.Data;
 
