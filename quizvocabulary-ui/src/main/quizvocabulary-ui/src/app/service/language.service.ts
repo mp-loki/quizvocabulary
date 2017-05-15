@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
+import { AuthHttp } from 'angular2-jwt';
 import { Profile } from '../model/profile';
 import { Language } from '../model/language';
 import { Observable } from 'rxjs/Rx';
@@ -16,22 +17,19 @@ const LANGUAGES: Language[] = [
     { name: '日本語', code: 'jp' },
 ];
 
+const LANG_URL = '/api/v1/languages';
 @Injectable()
 export class LanguageService {
 
-    constructor(private http: Http) { }
-    
-    
-    private langUrl = 'api/languages';
+    constructor(private authHttp: AuthHttp) { }
 
     getLanguages(): Promise<Language[]> {
-    	/*
-        return this.http.get(this.langUrl)
+        return this.authHttp.get(LANG_URL)
             .toPromise()
             .then(response => response.json() as Language[])
             .catch(this.handleError);
-            */
-    	return Promise.all(LANGUAGES);
+
+    	//return Promise.all(LANGUAGES);
     }
 
     getLanguageByName(name: string): Language {

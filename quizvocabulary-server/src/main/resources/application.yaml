@@ -1,0 +1,20 @@
+# Auth0 Settings
+auth0:
+  audience: quizvocabulary-api
+  issuer: https://valerii-sosliuk.auth0.com/
+
+# Spring Settings
+spring:
+# JPA Settings
+  jpa:
+    show-sql: false
+    hibernate.ddl-auto: update
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    generate-ddl: true
+
+# DB Settings
+  database.driverClassName: org.postgresql.Driver
+  datasource:
+    url: jdbc:postgresql://localhost:5432/quizvocabulary
+    username: quizvocabulary
+    password: quizvocabulary
