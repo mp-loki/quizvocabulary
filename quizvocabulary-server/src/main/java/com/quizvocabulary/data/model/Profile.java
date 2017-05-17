@@ -6,5 +6,6 @@ import lombok.Data;
 public class Profile {
 	
 	private String id;
+	private String email;
 	private Language defaultLanguage;
 }

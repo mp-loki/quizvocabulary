@@ -2,7 +2,8 @@ import { Language } from './language';
 
 export class Profile {
   id: number;
-  nativeLanguage: Language;
+  email: string;
+  defaultLanguage: Language;
   languages: Language[];
 
 }

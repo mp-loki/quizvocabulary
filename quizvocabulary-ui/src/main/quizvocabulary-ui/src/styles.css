@@ -1,1 +1,54 @@
-/* You can add global styles to this file, and also import other style files */
+h2 { color: #444; font-weight: lighter; }
+body { margin: 2em; }
+body, input[text], button { color: #888; font-family: Arial, Cambria, Georgia; }
+button { padding: 0.2em; font-size: 14px}
+* { font-family: Arial; }
+
+.top-buffer {
+	margin-top: 20px;
+}
+.float-right {
+	float: right;
+}
+.text-align-right {
+	text-align: right;
+}
+.circleBase {
+    border-radius: 50%;
+}
+.btn-circle {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 12px;
+  line-height: 1.428571429;
+  border-radius: 15px;
+}
+.alert-border {
+    color: #888888;
+    background-color: #ffffff;
+    border-color: #cccccc;
+}
+.bottom {
+    border-bottom: 1px solid #ccc;
+}
+.message {
+	font-weight: bold;
+	line-height: 0.8em;
+}
+.alert {
+	line-height: 0.8em;
+}
+.message-sm {
+	font-size: 11px;
+}
+.success-message {
+	color: #3c763d;
+}
+.failure-message {
+	color: #a94442;
+}
+.line-height-08 {
+	line-height: 0.8em;
+}

@@ -9,7 +9,7 @@
 	</div>
 	<div class="row col-sm-12">
 		<label for="sel1" i18n="Native Language">Native language:</label>
-		<select class="form-control" id="sel1" [(ngModel)]="profile.nativeLanguage">
+		<select class="form-control" id="sel1" [(ngModel)]="profile.defaultLanguage">
 			<option *ngFor="let language of languages" [ngValue]="language"><span>{{language.name}}</span></option>
 		</select>
 	</div>		

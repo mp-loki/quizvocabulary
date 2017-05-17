@@ -17,12 +17,12 @@ export class ProfileComponent implements OnInit {
     private router: Router,
     private profileService: ProfileService,
     private auth: Auth
-  ) { }
+  ) {}
 
 
   getProfile(): void {
     this.profileService.getProfile().then(profile => {
-      if (profile != null && profile.nativeLanguage != null) {
+      if (profile != null && profile.defaultLanguage != null) {
         this.profile = profile;
       } else {
         this.router.navigateByUrl('profile/create-profile');

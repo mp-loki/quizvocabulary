@@ -29,7 +29,8 @@ export class CreateProfileComponent implements OnInit {
   }
 
   proceed(): void {
-    this.profileService.saveTempProfile(this.profile);
+    this.profile.email = this.auth.userProfile.email;
+    this.profileService.saveProfile(this.profile);
     this.router.navigateByUrl('profile/select-language-studies');
   }
 
@@ -46,7 +47,7 @@ export class CreateProfileComponent implements OnInit {
       .then(languages => {
         console.log(languages);
         this.languages = languages;
-      });
+    });
   }
 
 }

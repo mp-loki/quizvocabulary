@@ -9,6 +9,9 @@ import com.google.common.collect.Lists;
 import com.quizvocabulary.dao.model.BaseEntity;
 import com.quizvocabulary.dao.util.DaoUtil;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 public abstract class AbstractJpaDao<E extends BaseEntity<T>, T, ID extends Serializable> implements Dao<T, ID>	{
 	
 	protected abstract CrudRepository<E, ID> getCrudRepository();
@@ -30,6 +33,7 @@ public abstract class AbstractJpaDao<E extends BaseEntity<T>, T, ID extends Seri
 		try {
             entity = getEntityClass().getConstructor(domain.getClass()).newInstance(domain);
         } catch (Exception e) {
+        	log.error(e.getMessage(), e);
             throw new IllegalArgumentException(String.format("Unable to create entity for domain object: %s", domain, e));
         }
         entity = getCrudRepository().save(entity);

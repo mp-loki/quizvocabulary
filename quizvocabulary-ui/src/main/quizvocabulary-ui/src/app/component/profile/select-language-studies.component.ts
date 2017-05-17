@@ -5,6 +5,7 @@ import { Language } from '../../model/language';
 @Component({
   moduleId: module.id,
   selector: 'select-language-studies',
+  styleUrls: ['../../view/css/flag-icon.css', '../../view/css/quiz.css'],
   templateUrl: '../../view/html/select-language-studies.component.html',
 })
 export class SelectLanguageStudiesComponent extends AbstractComponent implements OnInit {
@@ -14,12 +15,12 @@ export class SelectLanguageStudiesComponent extends AbstractComponent implements
   }
 
   ngOnInit(): void {
-      this.getLanguages();
-   // this.getProfile();
+    this.getLanguages();
+    // this.getProfile();
   }
 
   getNonNativeLanguages(): Language[] {
-    let nativeLang = this.languages.find(lang => lang.name === this.profile.nativeLanguage.name);
+    let nativeLang = this.languages.find(lang => lang.name === this.profile.defaultLanguage.name);
     let nativeLangIdx = this.languages.indexOf(nativeLang);
     let nonNativeLangs = this.languages.slice(0);
     nonNativeLangs.splice(nativeLangIdx, 1);
