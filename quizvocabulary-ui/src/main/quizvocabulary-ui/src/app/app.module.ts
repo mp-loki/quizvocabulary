@@ -4,16 +4,14 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule, Http, RequestOptions, JsonpModule } from '@angular/http';
 import { provideAuth, AuthHttp, AuthConfig } from 'angular2-jwt';
 
-import { AppComponent } from './app.component';
-import { HomeComponent } from './home.component';
+import { AppComponent } from './component/app.component';
+import { HomeComponent } from './component/home.component';
 import { ProfileComponent } from './component/profile/profile.component';
 import { SelectLanguageStudiesComponent } from './component/profile/select-language-studies.component';
 import { CreateProfileComponent } from './component/profile/create-profile.component';
 import { ProfileService } from './service/profile.service';
 import { LanguageService } from './service/language.service';
 import { HttpService } from './service/http.service';
-import { ProfileShow } from './profile_show.component';
-import { ProfileEdit } from './profile_edit.component';
 import {
   routing,
   appRoutingProviders
@@ -34,8 +32,6 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     AppComponent,
     HomeComponent,
     ProfileComponent,
-    ProfileShow,
-    ProfileEdit,
     SelectLanguageStudiesComponent,
     CreateProfileComponent
   ],

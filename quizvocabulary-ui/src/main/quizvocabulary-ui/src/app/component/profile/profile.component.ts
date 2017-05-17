@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Profile } from '../../model/profile';
 import { ProfileService } from '../../service/profile.service';
 import { Router } from '@angular/router';
-import { Auth } from '../../auth.service';
+import { Auth } from '../../service/auth.service';
 
 @Component({
   moduleId: module.id,
@@ -22,7 +22,7 @@ export class ProfileComponent implements OnInit {
 
   getProfile(): void {
     this.profileService.getProfile().then(profile => {
-      if (profile != null) {
+      if (profile != null && profile.nativeLanguage != null) {
         this.profile = profile;
       } else {
         this.router.navigateByUrl('profile/create-profile');

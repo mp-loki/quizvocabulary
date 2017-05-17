@@ -1,7 +1,7 @@
-import { ModuleWithProviders }         from '@angular/core';
-import { Routes, RouterModule }        from '@angular/router';
+import { ModuleWithProviders } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
 
-import { HomeComponent }               from './home.component';
+import { HomeComponent } from './component/home.component';
 import { SelectLanguageStudiesComponent } from './component/profile/select-language-studies.component';
 import { CreateProfileComponent } from './component/profile/create-profile.component';
 const appRoutes: Routes = [

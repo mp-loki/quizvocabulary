@@ -14,21 +14,19 @@ export class ProfileService extends AbstractService {
   }
 
   getProfile(): Promise<Profile> {
-
     if (this.profile != null) {
       return Promise.resolve(this.profile);
     } else {
       return this.authHttp.get(PROFILE_URL)
         .toPromise()
         .then(response => {
-          try {
             this.profile = response.json() as Profile;
             return this.profile;
-          } catch (e) {
-            return null;
-          }
         })
-        .catch(this.handleError);
+        .catch(error => {
+          console.log(error);
+          return null;
+        });
     }
   }
 

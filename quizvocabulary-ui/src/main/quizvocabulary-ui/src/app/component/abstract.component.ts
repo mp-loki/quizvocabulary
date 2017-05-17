@@ -3,7 +3,7 @@ import { Profile } from '../model/profile';
 import { Language } from '../model/language';
 import { ProfileService } from '../service/profile.service';
 import { LanguageService } from '../service/language.service';
-import { Auth } from '../auth.service';
+import { Auth } from '../service/auth.service';
 import { Router } from '@angular/router';
 
 export class AbstractComponent implements OnInit {
@@ -26,25 +26,29 @@ export class AbstractComponent implements OnInit {
   getProfile(): void {
     this.profileService.getProfile().then(profile => {
       this.profile = profile;
+      /*
       if (profile.nativeLanguage === undefined) {
         profile.nativeLanguage = this.languages[0];
       }
+       */
     });
   }
 
   getLanguages(): void {
     this.languageService.getLanguages()
       .then(languages => {
+          console.log(languages);
           this.languages = languages;
           this.getProfile();
       })
   }
 
   ngOnInit(): void {
-    //this.getLanguages();
 	  if (!this.auth.authenticated()) {
 		  this.auth.login();
-	  }
+	  } else {
+      this.getLanguages();
+    }
   }
 
   isEmpty(str: string): boolean {

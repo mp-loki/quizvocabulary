@@ -1,8 +1,3 @@
-<h1>{{title}}</h1>
-<div class="header-bar"></div>
-<nav>
-	<a routerLink="/" routerLinkActive="active">Home</a>
-	<a (click)="auth.login()" *ngIf="!auth.authenticated()">Login</a>
-	<a (click)="auth.logout()" *ngIf="auth.authenticated()">Log out</a>
-</nav>
-<router-outlet></router-outlet>
+<h1>
+  {{title}}
+</h1>
