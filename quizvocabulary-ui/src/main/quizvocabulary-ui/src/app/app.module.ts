@@ -6,12 +6,15 @@ import { provideAuth, AuthHttp, AuthConfig } from 'angular2-jwt';
 
 import { AppComponent } from './component/app.component';
 import { HomeComponent } from './component/home.component';
+import { LoginComponent } from './component/login.component';
 import { ProfileComponent } from './component/profile/profile.component';
 import { SelectLanguageStudiesComponent } from './component/profile/select-language-studies.component';
 import { CreateProfileComponent } from './component/profile/create-profile.component';
+
 import { ProfileService } from './service/profile.service';
 import { LanguageService } from './service/language.service';
 import { HttpService } from './service/http.service';
+
 import {
   routing,
   appRoutingProviders
@@ -31,6 +34,7 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
   declarations: [
     AppComponent,
     HomeComponent,
+    LoginComponent,
     ProfileComponent,
     SelectLanguageStudiesComponent,
     CreateProfileComponent

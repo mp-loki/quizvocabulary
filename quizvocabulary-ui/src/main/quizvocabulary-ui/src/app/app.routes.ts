@@ -2,11 +2,13 @@ import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from './component/home.component';
+import { LoginComponent } from './component/login.component';
 import { SelectLanguageStudiesComponent } from './component/profile/select-language-studies.component';
 import { CreateProfileComponent } from './component/profile/create-profile.component';
 const appRoutes: Routes = [
   { path: 'profile/select-language-studies', component: SelectLanguageStudiesComponent },
   { path: 'profile/create-profile', component: CreateProfileComponent },
+  { path: 'login', component: LoginComponent },
   { path: '', component: HomeComponent },
   { path: '**', redirectTo: '' },
 ];

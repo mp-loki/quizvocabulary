@@ -1,6 +1,7 @@
 import { Injectable }      from '@angular/core';
 import { tokenNotExpired } from 'angular2-jwt';
-import { myConfig }        from './auth.config';
+import { auth0Config }        from './auth.config';
+import { Router } from '@angular/router';
 
 // Avoid name not found warnings
 var options = {
@@ -15,12 +16,12 @@ declare var Auth0Lock: any;
 @Injectable()
 export class Auth {
   // Configure Auth0
-  lock = new Auth0Lock(myConfig.clientID, myConfig.domain, options);
+  lock = new Auth0Lock(auth0Config.clientID, auth0Config.domain, options);
 
   //Store profile object in auth class
   userProfile: any;
 
-  constructor() {
+  constructor(private router: Router) {
     // Set userProfile attribute if already saved profile
     this.userProfile = JSON.parse(localStorage.getItem('profile'));
 
@@ -58,10 +59,10 @@ export class Auth {
 
   public logout() {
     // Remove token and profile from localStorage
-    console.log("logout clicked");
     localStorage.removeItem('token');
     localStorage.removeItem('accessToken');
     localStorage.removeItem('profile');
     this.userProfile = undefined;
+    this.router.navigateByUrl('login');
   };
 }
