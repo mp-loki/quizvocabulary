@@ -1,27 +1,36 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
 import { Profile } from '../model/profile';
 import { AuthHttp } from 'angular2-jwt';
+import { Http, Response, RequestOptions, Headers } from '@angular/http';
+import { Observable } from 'rxjs/Rx';
 
-const SERVER_URL = "http://localhost:8080/api/v1/";
+const SERVER_URL = '/api/v1';
 
 @Injectable()
 export class HttpService {
 
   constructor(private http: Http, private authHttp: AuthHttp) { }
 
-  getUsers(): Promise<any> {
+  doPost(url: string, payload: any): Observable<any> {
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    const options = new RequestOptions({ headers: headers });
+    const body = JSON.stringify(payload);
+    console.log('Executing POST ' +  SERVER_URL + url + ", payload: " + payload);
+    return this.authHttp.post(SERVER_URL + url, payload, options);
+  }
+
+  getUsers(): Observable<any> {
     console.log('HttpService.getUsers() called');
     return this.doGet('users');
     //return '{\"users\":[{\"firstname\":\"Richard\", \"lastname\":\"Feynman\"},{\"firstname\":\"Marie\",\"lastname\":\"Curie\"}]}'
   }
 
-  doGet(path: String): Promise<any> {
-    return this.authHttp.get(SERVER_URL + path).toPromise().then(this.extractData).catch(this.handleError);
+  doGet(path: String): Observable<any> {
+    return this.authHttp.get(SERVER_URL + path);
   }
   private extractData(res: Response) {
-   // let body = res.json();
-   // return body.data || {};
+    // let body = res.json();
+    // return body.data || {};
     return JSON.stringify(res);
   }
   private handleError(error: Response | any) {

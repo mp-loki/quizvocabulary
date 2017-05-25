@@ -1,5 +1,7 @@
 package com.quizvocabulary.dao.model;
 
+import java.util.UUID;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -17,7 +19,6 @@ import lombok.NoArgsConstructor;
 public class LanguageEntity extends BaseEntity<Language> {
 	
 	@Id
-	@Column
 	private String name;
 	
 	@Column(unique = true)

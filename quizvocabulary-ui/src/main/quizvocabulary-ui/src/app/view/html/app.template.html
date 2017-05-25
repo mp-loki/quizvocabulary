@@ -3,7 +3,6 @@
     <div class="navbar-header">
       <a class="navbar-brand" href="#">Quizvocabulary</a>
       <button class="btn btn-primary btn-margin" [routerLink]="['']">Home</button>
-      <button class="btn btn-primary btn-margin" [routerLink]="['/profile']" *ngIf="auth.authenticated()">Profile</button>
       <button class="btn btn-primary btn-margin" (click)="auth.login()" *ngIf="!auth.authenticated()">Log In</button>
       <button class="btn btn-primary btn-margin" (click)="auth.logout()" *ngIf="auth.authenticated()">Log Out</button>
     </div>

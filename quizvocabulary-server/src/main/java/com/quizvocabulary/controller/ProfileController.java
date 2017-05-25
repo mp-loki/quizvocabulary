@@ -26,6 +26,7 @@ public class ProfileController extends AbstractController {
 	
 	@RequestMapping(value = "/profile", method = RequestMethod.GET)
 	public ResponseEntity<Profile> getProfile() {
+		log.info("*** GET /profile called");
 		Profile profile = profileService.getProfile(getProfileId());
 		if (profile != null) {
 			return new ResponseEntity<Profile>(profile, HttpStatus.OK);
@@ -36,6 +37,7 @@ public class ProfileController extends AbstractController {
 	
 	@RequestMapping(value = "/profile", method = RequestMethod.POST)
 	public ResponseEntity<?> saveOrUpdateProfile(@RequestBody Profile profile) {
+		log.info("*** POST /profile called");
 		log.info("Saving profile: " + profile);
 		profile.setId(getProfileId());
 		try {

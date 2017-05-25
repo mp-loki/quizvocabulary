@@ -4,13 +4,13 @@ import { Language } from './language';
 export class Study {
 
   id: number;
-  studyLanguage: Language;
+  language: Language;
   profileLanguage: Language;
   defaultBoard: Board;
 
-  constructor(studyLanguage: Language, profileLanguage: Language) {
-    this.studyLanguage = studyLanguage;
+  constructor(language: Language, profileLanguage: Language) {
+    this.language = language;
     this.profileLanguage = profileLanguage;
-    this.defaultBoard = new Board('Main Board', studyLanguage, profileLanguage);
+    this.defaultBoard = new Board('Main Board', language, profileLanguage);
   }
 }

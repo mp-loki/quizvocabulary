@@ -63,6 +63,6 @@ export class Auth {
     localStorage.removeItem('accessToken');
     localStorage.removeItem('profile');
     this.userProfile = undefined;
-    this.router.navigateByUrl('login');
+    //this.router.navigateByUrl('login');
   };
 }

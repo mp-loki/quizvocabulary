@@ -1,12 +1,15 @@
 package com.quizvocabulary.data.model;
 
+import java.util.UUID;
+
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
-public class Language {
+public class Board {
+	
+	private UUID id;
 	
 	private String name;
-	private String code;
 	
+	private Language language;
 }

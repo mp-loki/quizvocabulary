@@ -1,8 +1,20 @@
+<link rel="stylesheet" href="/app/view/css/flag-icon.css">
 <div class="row" *ngIf="auth.userProfile">
-	<div class="col-md-6">
+	<div class="col-md-8">
 	  <h3>Profile</h3>
 	  <img [src]="auth.userProfile.picture" alt="" class="profile-img">
 	  <p><strong>Name: </strong> {{auth.userProfile.name}}</p>
 	  <p><strong>Email: </strong> {{auth.userProfile.email}}</p>
+	</div>
+	<div class="col-md-8" *ngIf="profile">
+	  <h3>My Studies:</h3>
+	  <div class="col-sm-6 col-lg-6"  *ngFor="let language of getProfileLanguages()">
+		<div class="alert alert-border study" (click)="openStudy(language)">
+		   <label>{{language.name}}</label><span class="float-right flag-icon flag-icon-{{language.code}}"></span>
+		</div>
+	</div>
+	<div class="row col-sm-12 text-center top-buffer">
+		<button (click)="openLanguageStudies()" type="button" class="btn btn-success" i18n="Add Studies">Add Studies</button>
+	</div>
 	</div>
 </div>

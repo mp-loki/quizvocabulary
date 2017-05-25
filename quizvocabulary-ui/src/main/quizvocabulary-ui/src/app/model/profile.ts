@@ -6,4 +6,7 @@ export class Profile {
   defaultLanguage: Language;
   languages: Language[];
 
+  public toString = (): string => {
+    return JSON.stringify(this);
+  }
 }

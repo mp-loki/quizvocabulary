@@ -20,9 +20,9 @@ export class SelectLanguageStudiesComponent extends AbstractComponent implements
   }
 
   getNonNativeLanguages(): Language[] {
-    let nativeLang = this.languages.find(lang => lang.name === this.profile.defaultLanguage.name);
-    let nativeLangIdx = this.languages.indexOf(nativeLang);
-    let nonNativeLangs = this.languages.slice(0);
+    const nativeLang = this.languages.find(lang => lang.name === this.profile.defaultLanguage.name);
+    const nativeLangIdx = this.languages.indexOf(nativeLang);
+    const nonNativeLangs = this.languages.slice(0);
     nonNativeLangs.splice(nativeLangIdx, 1);
     return nonNativeLangs;
   }

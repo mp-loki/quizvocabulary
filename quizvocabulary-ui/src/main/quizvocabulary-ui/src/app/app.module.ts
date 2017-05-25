@@ -5,11 +5,12 @@ import { HttpModule, Http, RequestOptions, JsonpModule } from '@angular/http';
 import { provideAuth, AuthHttp, AuthConfig } from 'angular2-jwt';
 
 import { AppComponent } from './component/app.component';
+import { CreateProfileComponent } from './component/profile/create-profile.component';
 import { HomeComponent } from './component/home.component';
 import { LoginComponent } from './component/login.component';
 import { ProfileComponent } from './component/profile/profile.component';
 import { SelectLanguageStudiesComponent } from './component/profile/select-language-studies.component';
-import { CreateProfileComponent } from './component/profile/create-profile.component';
+import { StudyComponent } from './component/study/study.component';
 
 import { ProfileService } from './service/profile.service';
 import { LanguageService } from './service/language.service';

@@ -29,4 +29,9 @@ public class JpaLanguageDao extends AbstractJpaDao<LanguageEntity, Language, Str
 		return DaoUtil.toDto(languageRepository.findByCode(code));
 	}
 
+	@Override
+	public Language findByName(String name) {
+		return DaoUtil.toDto(languageRepository.findByName(name));
+	}
+
 }

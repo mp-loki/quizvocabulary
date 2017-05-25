@@ -8,7 +8,8 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 import { AbstractService } from './abstract.service';
-
+import { HttpService } from './http.service';
+/*
 const LANGUAGES: Language[] = [
     { name: 'English', code: 'en' },
     { name: 'Deutsch', code: 'de' },
@@ -17,29 +18,28 @@ const LANGUAGES: Language[] = [
     { name: 'Українська', code: 'ua' },
     { name: '日本語', code: 'jp' },
 ];
-
-const LANG_URL = '/api/v1/languages';
+*/
+const LANG_URL = '/languages';
 @Injectable()
 export class LanguageService extends AbstractService {
 
-    constructor(private authHttp: AuthHttp) {
-       super();
+  private languages: Language[];
+  constructor(private authHttp: AuthHttp, private httpService: HttpService) {
+    super();
+  }
+
+  getLanguages(): Promise<Language[]> {
+    if (this.languages != null) {
+      return Promise.all(this.languages);
     }
+    return this.httpService.doGet(LANG_URL)
+      .toPromise()
+      .then(response => {this.languages = response.json() as Language[]; return this.languages; })
+      .catch(this.handleError);
+  }
 
-    getLanguages(): Promise<Language[]> {
-        return this.authHttp.get(LANG_URL)
-            .toPromise()
-            .then(response => response.json() as Language[])
-            .catch(this.handleError);
-
-    	//return Promise.all(LANGUAGES);
-    }
-
-    getLanguageByName(name: string): Language {
-        return LANGUAGES.find(language => language.name === name);
-    }
-
-    getBoards(language: Language) { 
-
-    }
+  getLanguageByName(name: string): Language {
+    if (this.languages === null) { return null; };
+    return this.languages.find(language => language.name === name);
+  }
 }
