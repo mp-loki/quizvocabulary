@@ -6,9 +6,9 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import com.quizvocabulary.data.model.Board;
-import com.quizvocabulary.data.model.Language;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,8 +17,11 @@ import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor
 @Table(name="board")
-public class BoardEntity extends BaseEntity<Board> {
+public class BoardEntity implements ToDto<Board> {
 	
+	@Transient
+	private static final long serialVersionUID = 7592864956966766191L;
+
 	@Id
 	private UUID id;
 	

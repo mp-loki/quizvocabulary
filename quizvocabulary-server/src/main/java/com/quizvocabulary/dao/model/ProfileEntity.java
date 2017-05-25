@@ -1,7 +1,6 @@
 package com.quizvocabulary.dao.model;
 
 import java.util.List;
-import java.util.UUID;
 import java.util.stream.Collectors;
 
 import javax.persistence.Column;
@@ -10,8 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import com.quizvocabulary.data.model.Profile;
 
@@ -22,7 +21,10 @@ import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor
 @Table(name = "profile")
-public class ProfileEntity extends BaseEntity<Profile> {
+public class ProfileEntity implements ToDto<Profile> {
+
+	@Transient
+	private static final long serialVersionUID = 5253002666869325360L;
 
 	@Id
 	private String id;

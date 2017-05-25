@@ -3,12 +3,12 @@ package com.quizvocabulary.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import com.quizvocabulary.dao.language.LanguageDao;
 import com.quizvocabulary.data.model.Language;
 
-@Component
+@Service
 public class LanguageServiceImpl implements LanguageService {
 
 	@Autowired

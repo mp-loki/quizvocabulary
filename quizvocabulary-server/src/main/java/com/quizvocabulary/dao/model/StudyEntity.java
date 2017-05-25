@@ -24,7 +24,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor
 @Table(name = "study")
-public class StudyEntity extends BaseEntity<Study> implements Serializable {
+public class StudyEntity implements ToDto<Study> {
 
 	@Transient
 	private static final long serialVersionUID = 7345835054999934390L;

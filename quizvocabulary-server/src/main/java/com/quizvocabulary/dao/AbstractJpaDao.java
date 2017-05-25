@@ -6,13 +6,13 @@ import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 
 import com.google.common.collect.Lists;
-import com.quizvocabulary.dao.model.BaseEntity;
+import com.quizvocabulary.dao.model.ToDto;
 import com.quizvocabulary.dao.util.DaoUtil;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public abstract class AbstractJpaDao<E extends BaseEntity<T>, T, ID extends Serializable> implements Dao<T, ID>	{
+public abstract class AbstractJpaDao<E extends ToDto<T>, T, ID extends Serializable> implements Dao<T, ID>	{
 	
 	protected abstract CrudRepository<E, ID> getCrudRepository();
 	protected abstract Class<E> getEntityClass();

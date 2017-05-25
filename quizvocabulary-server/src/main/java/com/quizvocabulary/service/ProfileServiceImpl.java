@@ -1,12 +1,12 @@
 package com.quizvocabulary.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import com.quizvocabulary.dao.profile.ProfileDao;
 import com.quizvocabulary.data.model.Profile;
 
-@Component
+@Service
 public class ProfileServiceImpl implements ProfileService {
 
 	@Autowired

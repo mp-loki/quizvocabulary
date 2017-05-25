@@ -3,7 +3,7 @@ package com.quizvocabulary.service;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import com.fasterxml.uuid.NoArgGenerator;
 import com.quizvocabulary.dao.language.LanguageDao;
@@ -14,7 +14,7 @@ import com.quizvocabulary.data.model.Language;
 import com.quizvocabulary.data.model.Profile;
 import com.quizvocabulary.data.model.Study;
 
-@Component
+@Service
 public class StudyServiceImpl implements StudyService {
 
 	@Autowired
