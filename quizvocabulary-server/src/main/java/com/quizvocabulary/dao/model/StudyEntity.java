@@ -33,10 +33,10 @@ public class StudyEntity implements ToDto<Study> {
 	private UUID id;
 
 	@ManyToOne
-	private LanguageEntity language;
+	private LanguageEntity languageA;
 
 	@ManyToOne
-	private LanguageEntity profileLanguage;
+	private LanguageEntity languageB;
 	
 	@OneToOne(cascade=CascadeType.ALL)
 	private BoardEntity defaultBoard;
@@ -49,8 +49,8 @@ public class StudyEntity implements ToDto<Study> {
 
 	public StudyEntity(Study study) {
 		this.id = study.getId();
-		this.language = new LanguageEntity(study.getLanguage());
-		this.profileLanguage = new LanguageEntity(study.getProfileLanguage());
+		this.languageA = new LanguageEntity(study.getLanguageA());
+		this.languageB = new LanguageEntity(study.getLanguageB());
 		this.profileId = study.getProfileId();
 		this.defaultBoard = new BoardEntity(study.getDefaultBoard());
 	}
@@ -60,8 +60,8 @@ public class StudyEntity implements ToDto<Study> {
 		Study study = new Study();
 		study.setId(id);
 		study.setProfileId(profileId);
-		study.setLanguage(language.toDto());
-		study.setProfileLanguage(profileLanguage.toDto());
+		study.setLanguageA(languageA.toDto());
+		study.setLanguageB(languageB.toDto());
 		study.setDefaultBoard(defaultBoard.toDto());
 		return study;
 	}

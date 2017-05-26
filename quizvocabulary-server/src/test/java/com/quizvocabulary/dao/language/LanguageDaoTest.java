@@ -5,10 +5,10 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.quizvocabulary.QuizvocabularyApplicationTests;
+import com.quizvocabulary.AbstractSpringTest;
 import com.quizvocabulary.data.model.Language;
 
-public class LanguageDaoTest extends QuizvocabularyApplicationTests {
+public class LanguageDaoTest extends AbstractSpringTest {
 
 	@Autowired
 	private LanguageDao languageDao;

@@ -28,12 +28,16 @@ public class BoardEntity implements ToDto<Board> {
 	private String name;
 	
 	@ManyToOne
-	private LanguageEntity language;
+	private LanguageEntity languageA;
+	
+	@ManyToOne
+	private LanguageEntity languageB;
 
 	public BoardEntity(Board board) {
 		this.id = board.getId();
 		this.name = board.getName();
-		this.language = new LanguageEntity(board.getLanguage());
+		this.languageA = new LanguageEntity(board.getLanguageA());
+		this.languageB = new LanguageEntity(board.getLanguageB());
 	}
 	
 	@Override
@@ -41,7 +45,8 @@ public class BoardEntity implements ToDto<Board> {
 		Board board = new Board();
 		board.setId(id);
 		board.setName(name);
-		board.setLanguage(language.toDto());
+		board.setLanguageA(languageA.toDto());
+		board.setLanguageB(languageB.toDto());
 		return board;
 	}
 }

@@ -11,5 +11,6 @@ public class Board {
 	
 	private String name;
 	
-	private Language language;
+	private Language languageA;
+	private Language languageB;
 }

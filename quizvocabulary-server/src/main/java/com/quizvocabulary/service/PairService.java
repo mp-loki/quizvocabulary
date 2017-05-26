@@ -18,4 +18,6 @@ public interface PairService {
 	
 	List<BoardPair> find(UUID boardId, int page, int limit);
 	
+	List<BoardPair> findRandom(UUID boardId, int limit);
+	
 }

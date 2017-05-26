@@ -23,7 +23,7 @@ public class StudyServiceTest extends AbstractSpringTest {
 	private ProfileService profileService;
 	
 	@Test
-	public void testInject() {
+	public void testGetStudy() {
 		Profile profile = setupProfile();
 		Optional<Study> studyOpt1 = studyService.getStudy(profile.getId(), "Deutsch");
 		assertTrue("Optional is expected to contain a value", studyOpt1.isPresent());

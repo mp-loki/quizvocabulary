@@ -3,6 +3,7 @@ package com.quizvocabulary.dao.model;
 import java.util.UUID;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
@@ -25,6 +26,8 @@ public class BoardPairEntity implements ToDto<BoardPair> {
 
 	@Id
 	private UUID id;
+	
+	@Column(name = "board_id")
 	private UUID boardId;
 
 	@ManyToOne(cascade = CascadeType.DETACH)

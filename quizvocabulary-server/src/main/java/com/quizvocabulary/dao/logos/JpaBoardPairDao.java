@@ -38,13 +38,13 @@ public class JpaBoardPairDao extends AbstractJpaDao<BoardPairEntity, BoardPair, 
 
 	@Override
 	public List<BoardPair> findPageByBoardId(UUID boardId, int page, int limit) {
-		PageRequest pageRequest = getPageRequest(page, limit, new Sort(Direction.DESC, "id"));
-		return boardPairRepository.findPageByBoardId(boardId, pageRequest);
+		PageRequest pageRequest = new PageRequest(page, limit, new Sort(Direction.DESC, "id"));
+		return DaoUtil.toDtoList(boardPairRepository.findPageByBoardId(boardId, pageRequest));
 	}
 
-	private PageRequest getPageRequest(int page, int limit, Sort sort) {
-		PageRequest request = new PageRequest(page, limit, sort);
-		return request;
+	@Override
+	public List<BoardPair> findRandom(UUID boardId, int limit) {
+		return DaoUtil.toDtoList(boardPairRepository.findRandom(boardId, limit));
 	}
 
 }

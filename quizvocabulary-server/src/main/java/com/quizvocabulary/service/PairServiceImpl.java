@@ -60,4 +60,9 @@ public class PairServiceImpl implements PairService {
 	public List<BoardPair> find(UUID boardId, int page, int limit) {
 		return boardPairDao.findPageByBoardId(boardId, page, limit);
 	}
+
+	@Override
+	public List<BoardPair> findRandom(UUID boardId, int limit) {
+		return boardPairDao.findRandom(boardId, limit);
+	}
 }
