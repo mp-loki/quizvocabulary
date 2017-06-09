@@ -8,4 +8,6 @@ import com.quizvocabulary.dao.model.PairEntity;
 
 public interface PairRepository extends PagingAndSortingRepository<PairEntity, UUID> {
 	
+	PairEntity findByLogosA_LogosAndLogosB_Logos(String logosALogos, String logosBLogos);
+	
 }

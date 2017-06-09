@@ -1,6 +1,7 @@
 package com.quizvocabulary.service;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -71,17 +72,6 @@ public class StudyServiceImpl implements StudyService {
 		return board;
 	}
 
-	@Override
-	public BoardPair addPair(UUID boardId, Pair pair) {
-		BoardPair boardPair = new BoardPair();
-		boardPair.setId(uuidGenerator.generate());
-		boardPair.setBoardId(boardId);
-		// TODO: complete this method
-
-		
-		return null;
-	}
-
 	private Study createStudy(Profile profile, String langName) {
 		Language languageA = languageDao.findByName(langName);
 		Language languageB = profile.getDefaultLanguage();
@@ -104,5 +94,4 @@ public class StudyServiceImpl implements StudyService {
 		board.setLanguageB(languageB);
 		return board;
 	}
-
 }

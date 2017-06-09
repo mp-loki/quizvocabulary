@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.uuid.NoArgGenerator;
 import com.quizvocabulary.dao.AbstractJpaDao;
 import com.quizvocabulary.dao.model.LogosEntity;
 import com.quizvocabulary.data.model.Logos;
@@ -16,6 +17,9 @@ public class JpaLogosDao extends AbstractJpaDao<LogosEntity, Logos, UUID> implem
 	@Autowired
 	private LogosRepository logosRepository;
 
+	@Autowired
+	private NoArgGenerator uuidGenerator;
+
 	@Override
 	protected CrudRepository<LogosEntity, UUID> getCrudRepository() {
 		return logosRepository;
@@ -24,6 +28,16 @@ public class JpaLogosDao extends AbstractJpaDao<LogosEntity, Logos, UUID> implem
 	@Override
 	protected Class<LogosEntity> getEntityClass() {
 		return LogosEntity.class;
+	}
+
+	@Override
+	public Logos save(Logos logos) {
+		LogosEntity entity = logosRepository.findByLanguageIdAndLogos(logos.getLanguageId(), logos.getLogos());
+		if (entity != null) {
+			return entity.toDto();
+		}
+		Logos logosTmpl = new Logos(uuidGenerator.generate(), logos.getLanguageId(), logos.getLogos());
+		return super.save(logosTmpl);
 	}
 
 }

@@ -13,7 +13,7 @@ public class LanguageDaoTest extends AbstractSpringTest {
 	@Autowired
 	private LanguageDao languageDao;
 	
-	@Ignore
+	//@Ignore
 	@Test
 	public void testSave() {
 		Language language = new Language();

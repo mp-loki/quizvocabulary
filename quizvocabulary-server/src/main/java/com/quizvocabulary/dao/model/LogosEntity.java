@@ -24,12 +24,13 @@ public class LogosEntity implements ToDto<Logos> {
 	@Id
 	private UUID id;
 	
-	private LanguageEntity language;
+	private String languageId;
+	
 	private String logos;
 	
 	public LogosEntity(Logos logos) {
 		this.id = logos.getId();
-		this.language = logos.getLanguage();
+		this.languageId = logos.getLanguageId();
 		this.logos = logos.getLogos();
 	}
 	
@@ -37,7 +38,7 @@ public class LogosEntity implements ToDto<Logos> {
 	public Logos toDto() {
 		Logos logos = new Logos();
 		logos.setId(this.id);
-		logos.setLanguage(this.language);
+		logos.setLanguageId(languageId);
 		logos.setLogos(this.logos);
 		return logos;
 	}

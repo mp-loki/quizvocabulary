@@ -8,4 +8,8 @@ public interface LanguageService {
 
 	List<Language> findAll();
 
+	Language findByCode(String code);
+
+	Language findByName(String name);
+
 }
